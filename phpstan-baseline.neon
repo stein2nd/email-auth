@@ -37,18 +37,6 @@ parameters:
 			path: includes/utils/common.php
 
 		-
-			message: '#^PHPDoc tag @param has invalid value \(array\[string\]string \$keys The private keys\.\)\: Unexpected token "string", expected variable at offset 91 on line 4$#'
-			identifier: phpDoc.parseError
-			count: 1
-			path: includes/utils/common.php
-
-		-
-			message: '#^PHPDoc tag @return has invalid value \(array\[string\]string \$keys The private keys\.\)\: Unexpected token "string", expected TOKEN_HORIZONTAL_WS at offset 75 on line 4$#'
-			identifier: phpDoc.parseError
-			count: 1
-			path: includes/utils/common.php
-
-		-
 			message: '#^Path in require_once\(\) "/Users/stein/Library/CloudStorage/Dropbox/GitHub/email\-auth/phpstan/wordpress\-root/wp\-admin/includes/class\-wp\-filesystem\-base\.php" is not a file or it does not exist\.$#'
 			identifier: requireOnce.fileNotFound
 			count: 1
