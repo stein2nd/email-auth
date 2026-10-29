@@ -10,13 +10,22 @@
 		"dealerdirect/phpcodesniffer-composer-installer": "^1.0",
 		"phpcompatibility/phpcompatibility-wp": "*",
 		"wp-coding-standards/wpcs": "^3.0",
+		"phpstan/phpstan": "^2.1",
+		"php-stubs/wordpress-stubs": "^6.8",
 		"phpunit/phpunit": "^9.0",
 		"yoast/phpunit-polyfills" : "^3.0"
 	},
 	"scripts": {
-		"phpcs": "vendor/bin/phpcs --report=summary",
-		"phpcs:full": "vendor/bin/phpcs",
-		"phpcs:fix": "vendor/bin/phpcbf",
+		"phpstan": "@php vendor/bin/phpstan analyse -c phpstan.neon.dist --memory-limit=512M",
+		"phpcs": "@php vendor/bin/phpcs -p --standard=phpcs.xml.dist",
+		"phpcs:wpcs": "@php vendor/bin/phpcs -p --standard=phpcs.wpcs.xml.dist",
+		"phpcs:full": "@phpcs",
+		"phpcs:fix": "vendor/bin/phpcbf --standard=phpcs.xml.dist",
+		"lint:php": [
+			"@phpstan",
+			"@phpcs",
+			"@phpcs:wpcs"
+		],
 		"test": "vendor/bin/phpunit",
 		"test:unit": "vendor/bin/phpunit --testsuite unit",
 		"test:integration": "vendor/bin/phpunit --testsuite integration"
